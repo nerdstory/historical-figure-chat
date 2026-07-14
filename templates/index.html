@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>시대의 대화</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nanum+Myeongjo:wght@400;700&family=IBM+Plex+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="atmosphere" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- 진입: 인물 선택 -->
+  <section id="lobby" class="lobby">
+    <header class="brand-block">
+      <p class="brand">시대의 대화</p>
+      <h1 class="headline">역사를 건너,<br />그 사람과 말하다</h1>
+      <p class="lead">인물을 고르고 질문하세요. 타자기처럼 답하고, 원하면 소리로도 들려줍니다.</p>
+    </header>
+
+    <nav class="figure-nav" id="figureNav" aria-label="역사적 인물 선택">
+      <!-- figures loaded by JS -->
+    </nav>
+  </section>
+
+  <!-- 대화 화면 -->
+  <section id="chatRoom" class="chat-room" hidden>
+    <header class="chat-top">
+      <button type="button" class="back-btn" id="backBtn" aria-label="인물 다시 선택">← 인물 선택</button>
+      <div class="chat-identity">
+        <p class="chat-name" id="chatName"></p>
+        <p class="chat-era" id="chatEra"></p>
+      </div>
+      <label class="voice-toggle">
+        <input type="checkbox" id="autoSpeak" checked />
+        <span>답변 음성</span>
+      </label>
+    </header>
+
+    <div class="messages" id="messages" role="log" aria-live="polite"></div>
+
+    <form class="composer" id="composer">
+      <button type="button" class="mic-btn" id="micBtn" title="말하기" aria-label="음성으로 말하기">
+        <span class="mic-icon" aria-hidden="true"></span>
+      </button>
+      <input
+        type="text"
+        id="userInput"
+        placeholder="질문을 입력하거나 마이크를 누르세요…"
+        autocomplete="off"
+        maxlength="2000"
+      />
+      <button type="submit" class="send-btn">보내기</button>
+    </form>
+    <p class="mic-hint" id="micHint" hidden>듣고 있습니다… 말씀해 주세요</p>
+  </section>
+
+  <audio id="player" hidden></audio>
+  <script src="/static/app.js"></script>
+</body>
+</html>
