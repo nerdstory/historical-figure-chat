@@ -116,7 +116,8 @@ def chat():
         figure = FIGURES[figure_id]
         messages = [{"role": "system", "content": figure["prompt"]}]
 
-        for turn in history[-20:]:
+        # 이전 대화를 충분히 유지 (최대 40턴 ≈ 20왕복)
+        for turn in history[-40:]:
             role = turn.get("role")
             content = turn.get("content")
             if role in {"user", "assistant"} and content:
